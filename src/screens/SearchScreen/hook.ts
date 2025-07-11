@@ -17,6 +17,7 @@ export function useSearchArtist() {
     setError(null);
     try {
       const data = await fetchAlbumsByArtist(artist, 10);
+      console.log('data', data);
       if (data.releases && data.releases.length > 0) {
         addSearch(artist);
         navigation.navigate('List');

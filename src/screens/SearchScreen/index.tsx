@@ -3,15 +3,25 @@ import { View } from 'react-native';
 import { TextInput, Button, Text, ActivityIndicator } from 'react-native-paper';
 import { searchScreenStyles as styles } from './styles';
 import { useSearchArtist } from './hook';
+import { useSearchHistory } from '../../contexts/SearchHistoryContext';
+import PreviousSearches from '../../components/PreviousSearches';
 
 const SearchScreen = () => {
   const [query, setQuery] = useState('');
   const { searchArtist, loading } = useSearchArtist();
+  const { history } = useSearchHistory();
 
   const handleSearch = () => {
     if (query.trim()) {
       searchArtist(query.trim());
+      setQuery('');
     }
+  };
+
+  const handleSelectPrevious = (artist: string) => {
+    setQuery(artist);
+    searchArtist(artist);
+    setQuery('');
   };
 
   return (
@@ -31,6 +41,7 @@ const SearchScreen = () => {
         Search
       </Button>
       {loading && <ActivityIndicator style={styles.spinner} animating size="large" />}
+      <PreviousSearches artists={history} onSelect={handleSelectPrevious} />
     </View>
   );
 };
