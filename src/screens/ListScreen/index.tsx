@@ -1,14 +1,17 @@
 import React from 'react';
-import { View, FlatList } from 'react-native';
-import { Text, List } from 'react-native-paper';
+import { View, FlatList, Pressable, StyleSheet } from 'react-native';
+import { Text, List, Portal, ActivityIndicator } from 'react-native-paper';
 import { listScreenStyles } from './styles';
 import BackButton from '../../components/BackButton';
 import { useSearchResult } from '../../contexts/SearchResultContext';
 import { useArtist } from '../../contexts/ArtistContext';
+import { useAlbumDetailHandler } from './hook';
 
 const ListScreen = () => {
   const { searchResult } = useSearchResult();
   const { artist } = useArtist();
+
+  const { handleAlbumPress, loading } = useAlbumDetailHandler();
 
   return (
     <View style={listScreenStyles.container}>
@@ -26,14 +29,23 @@ const ListScreen = () => {
           keyExtractor={item => item.id}
           style={listScreenStyles.list}
           renderItem={({ item }) => (
-            <List.Item
-              title={item.title}
-              description={item.date}
-              left={props => <List.Icon {...props} icon="album" />}
-            />
+            <Pressable onPress={() => handleAlbumPress(item.id)}>
+              <List.Item
+                title={item.title}
+                description={item.date}
+                left={props => <List.Icon {...props} icon="album" />}
+              />
+            </Pressable>
           )}
         />
       )}
+      <Portal>
+        {loading && (
+          <View style={listScreenStyles.overlaySpinner}>
+            <ActivityIndicator size="large" />
+          </View>
+        )}
+      </Portal>
     </View>
   );
 };

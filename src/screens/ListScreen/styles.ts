@@ -30,4 +30,11 @@ export const listScreenStyles = StyleSheet.create({
     width: '100%',
     marginTop: 16,
   },
+  overlaySpinner: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'rgba(0,0,0,0.2)',
+    justifyContent: 'center',
+    alignItems: 'center',
+    zIndex: 1000,
+  },
 }); 

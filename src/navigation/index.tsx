@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { RootStackParamList } from './types'
 import SearchScreen from '../screens/SearchScreen'
 import ListScreen from '../screens/ListScreen'
+import DetailsScreen from '../screens/DetailsScreen'
 
 const Stack = createNativeStackNavigator<RootStackParamList>()
 
@@ -13,7 +14,7 @@ export default function AppNavigator() {
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Search" component={SearchScreen} />
         <Stack.Screen name="List" component={ListScreen} />
-        {/* <Stack.Screen name="Details" component={DetailsScreen} /> */}
+        <Stack.Screen name="Details" component={DetailsScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   )
