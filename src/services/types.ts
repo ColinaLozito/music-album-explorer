@@ -5,6 +5,7 @@ export interface AlbumListItem {
   date: string;
   country: string;
   "track-count": number;
+  "artist-credit"?: { name: string }[];
 }
 
 // Album list response type

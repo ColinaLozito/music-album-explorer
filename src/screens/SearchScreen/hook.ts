@@ -5,21 +5,28 @@ import { useSearchHistory } from '../../contexts/SearchHistoryContext';
 import type { RootStackParamList } from '../../navigation/types';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useSetError } from '../../contexts/ErrorContext';
+import { useSearchResult } from '../../contexts/SearchResultContext';
+import { useArtist } from '../../contexts/ArtistContext';
 
 export function useSearchArtist() {
   const [loading, setLoading] = useState(false);
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { addSearch } = useSearchHistory();
   const setError = useSetError();
+  const { setSearchResult } = useSearchResult();
+  const { setArtist } = useArtist();
 
   const searchArtist = async (artist: string) => {
     setLoading(true);
     setError(null);
     try {
       const data = await fetchAlbumsByArtist(artist, 10);
-      console.log('data', data);
       if (data.releases && data.releases.length > 0) {
         addSearch(artist);
+        setSearchResult(data);
+        // Set artist in context if available
+        const firstRelease = data.releases[0];
+        setArtist({ id: firstRelease.id, name: artist });
         navigation.navigate('List');
       } else {
         setError('No albums found for this artist.');

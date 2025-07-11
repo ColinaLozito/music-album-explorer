@@ -20,4 +20,14 @@ export const listScreenStyles = StyleSheet.create({
     paddingTop: 16,
     paddingLeft: 8,
   },
+  artistName: {
+    marginBottom: 16,
+    marginTop: 32,
+    fontSize: 24,
+    fontWeight: 'bold',
+  },
+  list: {
+    width: '100%',
+    marginTop: 16,
+  },
 }); 
