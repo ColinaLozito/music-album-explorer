@@ -9,7 +9,11 @@ import { ContextProvider } from './src/context';
 function GlobalErrorBanner() {
   const error = useError();
   const setError = useSetError();
-  return <ErrorBanner visible={!!error} message={error} onDismiss={() => setError(null)} />;
+  return <ErrorBanner 
+    visible={!!error} 
+    message={error} 
+    onDismiss={() => setError(null)} 
+  />;
 }
 
 export default function App() {
