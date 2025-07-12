@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View } from 'react-native';
+import { View, Image } from 'react-native';
 import { TextInput, Button, Text, ActivityIndicator } from 'react-native-paper';
 import { searchScreenStyles as styles } from './styles';
 import { useSearchArtist } from './hook';
@@ -26,6 +26,11 @@ const SearchScreen = () => {
 
   return (
     <View style={styles.container}>
+      <Image
+        source={require('../../../assets/splash-icon.png')}
+        style={styles.splashIcon}
+        resizeMode="contain"
+      />
       <Text variant="titleLarge" style={styles.title}>Search Artist</Text>
       <TextInput
         label="Artist Name"

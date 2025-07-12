@@ -2,7 +2,7 @@ import { SafeAreaView } from 'react-native'
 import { PaperProvider } from 'react-native-paper'
 import AppNavigator from './src/navigation';
 import ErrorBanner from './src/components/ErrorBanner';
-import ErrorBoundary from './src/components/ErrorHandler';
+import ErrorBoundary from './src/components/ErrorBoundary';
 import { useError, useSetError } from './src/context/ErrorContext';
 import { ContextProvider } from './src/context';
 

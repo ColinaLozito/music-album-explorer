@@ -33,4 +33,10 @@ export const searchScreenStyles = StyleSheet.create({
     color: '#b00020',
     fontWeight: 'bold',
   },
+  splashIcon: {
+    width: 120,
+    height: 120,
+    alignSelf: 'center',
+    marginBottom: 24,
+  },
 });
