@@ -1,11 +1,6 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
-import type { AlbumListResponse } from '../services/types';
-
-interface SearchResultContextType {
-  searchResult: AlbumListResponse | null;
-  setSearchResult: (result: AlbumListResponse) => void;
-  clearSearchResult: () => void;
-}
+import { SearchResultContextType } from './types';
+import { AlbumListResponse } from '../../services/types';
 
 const SearchResultContext = createContext<SearchResultContextType | undefined>(undefined);
 

@@ -1,15 +1,5 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
-
-export interface Artist {
-  id: string;
-  name: string;
-}
-
-interface ArtistContextType {
-  artist: Artist | null;
-  setArtist: (artist: Artist) => void;
-  clearArtist: () => void;
-}
+import { Artist, ArtistContextType } from './types';
 
 const ArtistContext = createContext<ArtistContextType | undefined>(undefined);
 

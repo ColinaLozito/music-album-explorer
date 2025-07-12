@@ -5,6 +5,7 @@ export const detailsScreenStyles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: 16,
     paddingTop: 32,
+    backgroundColor: 'white',
   },
   backButtonWrapper: {
     position: 'absolute',

@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { fetchAlbumsByArtist } from '../../services/musicbrainz';
-import { useSearchHistory } from '../../contexts/SearchHistoryContext';
+import { useSearchHistory } from '../../context/SearchHistoryContext';
 import type { RootStackParamList } from '../../navigation/types';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { useSetError } from '../../contexts/ErrorContext';
-import { useSearchResult } from '../../contexts/SearchResultContext';
-import { useArtist } from '../../contexts/ArtistContext';
+import { useSetError } from '../../context/ErrorContext';
+import { useSearchResult } from '../../context/SearchResultContext';
+import { useArtist } from '../../context/ArtistContext';
 
 export function useSearchArtist() {
   const [loading, setLoading] = useState(false);

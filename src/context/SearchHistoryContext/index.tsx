@@ -3,7 +3,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { SearchHistoryContextType } from './types';
 
 const STORAGE_KEY = 'SEARCH_HISTORY';
-const MAX_HISTORY = 10;
+const MAX_HISTORY = 5;
 
 const SearchHistoryContext = createContext<SearchHistoryContextType | undefined>(undefined);
 
@@ -11,6 +11,7 @@ export const SearchHistoryProvider = ({ children }: { children: ReactNode }) => 
   const [history, setHistory] = useState<string[]>([]);
 
   useEffect(() => {
+    //AsyncStorage.clear();
     (async () => {
       const stored = await AsyncStorage.getItem(STORAGE_KEY);
       if (stored) setHistory(JSON.parse(stored));

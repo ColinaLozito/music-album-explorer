@@ -1,11 +1,6 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
-import type { AlbumDetails } from '../services/types';
-
-interface AlbumDetailContextType {
-  albumDetail: AlbumDetails | null;
-  setAlbumDetail: (detail: AlbumDetails) => void;
-  clearAlbumDetail: () => void;
-}
+import type { AlbumDetails } from '../../services/types';
+import { AlbumDetailContextType } from './types';
 
 const AlbumDetailContext = createContext<AlbumDetailContextType | undefined>(undefined);
 

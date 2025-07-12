@@ -3,8 +3,8 @@ import { useNavigation } from '@react-navigation/native';
 import type { RootStackParamList } from '../../navigation/types';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { fetchAlbumDetails } from '../../services/musicbrainz';
-import { useSetError } from '../../contexts/ErrorContext';
-import { useAlbumDetail } from '../../contexts/AlbumDetailContext';
+import { useSetError } from '../../context/ErrorContext';
+import { useAlbumDetail } from '../../context/AlbumDetailContext';
 
 export function useAlbumDetailHandler() {
   const [loading, setLoading] = useState(false);

@@ -1,29 +1,30 @@
 import React, { useCallback } from 'react';
 import { View, FlatList, ListRenderItemInfo } from 'react-native';
 import { Text, List } from 'react-native-paper';
-import { useAlbumDetail } from '../../contexts/AlbumDetailContext';
-import BackButton from '../../components/BackButton';
+import { useAlbumDetail } from '../../context/AlbumDetailContext';
 import { detailsScreenStyles } from './styles';
-import type { Media } from '../../services/types';
+import type { Media, Track } from '../../services/types';
 
 const DetailsScreen = () => {
   const { albumDetail } = useAlbumDetail();
 
+  const renderTrackItem = useCallback(({ item: track }: ListRenderItemInfo<Track>) => (
+    <List.Item
+      title={`${track.number}. ${track.title}`}
+      left={props => <List.Icon {...props} icon="music-note" />}
+    />
+  ), []);
+
   const renderMediaItem = useCallback(({ item: media }: ListRenderItemInfo<Media>) => (
     <View style={detailsScreenStyles.mediaSection}>
-      {albumDetail?.media?.length && albumDetail.media.length > 1 && <Text style={detailsScreenStyles.mediaTitle}>Media {media.position} ({media.format})</Text>}
+      <Text style={detailsScreenStyles.mediaTitle}>Media {media.position} ({media.format})</Text>
       <FlatList
         data={media.tracks}
         keyExtractor={track => track.id}
-        renderItem={({ item: track }) => (
-          <List.Item
-            title={`${track.number}. ${track.title}`}
-            left={props => <List.Icon {...props} icon="music-note" />}
-          />
-        )}
+        renderItem={renderTrackItem}
       />
     </View>
-  ), []);
+  ), [renderTrackItem]);
 
   if (!albumDetail) {
     return (
@@ -35,15 +36,12 @@ const DetailsScreen = () => {
 
   return (
     <View style={detailsScreenStyles.container}>
-      <View style={detailsScreenStyles.backButtonWrapper}>
-        <BackButton />
-      </View>
-      <Text variant="titleLarge" style={detailsScreenStyles.title}>{albumDetail.title}</Text>
       <Text>Date: {albumDetail.date}</Text>
       <Text>Country: {albumDetail.country}</Text>
       <FlatList
         data={albumDetail.media}
         keyExtractor={item => item.id}
+        style={detailsScreenStyles.list}
         renderItem={renderMediaItem}
       />
     </View>

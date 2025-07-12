@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import { TextInput, Button, Text, ActivityIndicator } from 'react-native-paper';
 import { searchScreenStyles as styles } from './styles';
 import { useSearchArtist } from './hook';
-import { useSearchHistory } from '../../contexts/SearchHistoryContext';
+import { useSearchHistory } from '../../context/SearchHistoryContext';
 import PreviousSearches from '../../components/PreviousSearches';
 
 const SearchScreen = () => {
