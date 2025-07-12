@@ -1,5 +1,11 @@
+/**
+ * ErrorBoundary is a class-based React error boundary for catching render errors in the app.
+ * Displays a fallback UI when an error is caught and allows the user to reset the error state.
+ * Wrap your app or component subtree with this to catch unexpected errors.
+ */
 import React from 'react';
 import { View, Text, Button } from 'react-native';
+import { errorBoundaryStyles } from './styles';
 
 interface ErrorBoundaryState {
   hasError: boolean;
@@ -27,9 +33,13 @@ class ErrorBoundary extends React.Component<React.PropsWithChildren<{}>, ErrorBo
   render() {
     if (this.state.hasError) {
       return (
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', padding: 24 }}>
-          <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#b00020', marginBottom: 16 }}>Something went wrong</Text>
-          <Text style={{ marginBottom: 24, color: '#333', textAlign: 'center' }}>{this.state.error?.message || 'An unexpected error occurred.'}</Text>
+        <View style={errorBoundaryStyles.container}>
+          <Text style={errorBoundaryStyles.title}>
+            Something went wrong
+          </Text>
+          <Text style={errorBoundaryStyles.message}>
+            {this.state.error?.message || 'An unexpected error occurred.'}
+          </Text>
           <Button title="Try Again" onPress={this.handleReset} />
         </View>
       );

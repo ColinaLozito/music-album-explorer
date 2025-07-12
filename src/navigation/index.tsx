@@ -1,3 +1,10 @@
+/**
+ * App navigation setup using React Navigation's native stack navigator.
+ *
+ * - Defines the main navigation stack for the app: Search, List, and Details screens.
+ * - Custom headers display artist or album information using context.
+ * - Each screen is registered with its component and header options.
+ */
 import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
@@ -9,8 +16,12 @@ import { Appbar } from 'react-native-paper';
 import { useArtist } from '../context/ArtistContext';
 import { useAlbumDetail } from '../context/AlbumDetailContext';
 
+// Create the main stack navigator with type safety
 const Stack = createNativeStackNavigator<RootStackParamList>()
 
+/**
+ * Custom header for the List screen, showing the current artist name from context.
+ */
 const ListHeader = ({ navigation, back }: { navigation?: any; back?: any }) => {
   const { artist } = useArtist();
   return (
@@ -21,6 +32,9 @@ const ListHeader = ({ navigation, back }: { navigation?: any; back?: any }) => {
   );
 }
 
+/**
+ * Custom header for the Details screen, showing the current album title from context.
+ */
 const DetailsHeader = ({ navigation, back }: { navigation?: any; back?: any }) => {
   const { albumDetail } = useAlbumDetail();
   return (
@@ -31,6 +45,10 @@ const DetailsHeader = ({ navigation, back }: { navigation?: any; back?: any }) =
   );
 }
 
+/**
+ * Main app navigator component.
+ * Registers all screens and their headers in the navigation stack.
+ */
 const AppNavigator = () => {
   return (
     <NavigationContainer>

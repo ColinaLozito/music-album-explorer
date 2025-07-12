@@ -1,3 +1,8 @@
+/**
+ * SearchHistoryContext provides the recent search history and functions to add or clear it.
+ * Uses AsyncStorage to persist history between app launches.
+ * Used to display and manage previous artist searches.
+ */
 import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { SearchHistoryContextType } from './types';
@@ -5,13 +10,19 @@ import { SearchHistoryContextType } from './types';
 const STORAGE_KEY = 'SEARCH_HISTORY';
 const MAX_HISTORY = 5;
 
+/**
+ * The context object for search history data and actions.
+ */
 const SearchHistoryContext = createContext<SearchHistoryContextType | undefined>(undefined);
 
+/**
+ * Provider component for SearchHistoryContext.
+ * Wrap your component tree with this to provide search history state.
+ */
 export const SearchHistoryProvider = ({ children }: { children: ReactNode }) => {
   const [history, setHistory] = useState<string[]>([]);
 
   useEffect(() => {
-    //AsyncStorage.clear();
     (async () => {
       const stored = await AsyncStorage.getItem(STORAGE_KEY);
       if (stored) setHistory(JSON.parse(stored));
@@ -43,6 +54,10 @@ export const SearchHistoryProvider = ({ children }: { children: ReactNode }) => 
   );
 };
 
+/**
+ * Hook to access the search history context.
+ * Throws if used outside a SearchHistoryProvider.
+ */
 export const useSearchHistory = () => {
   const ctx = useContext(SearchHistoryContext);
   if (!ctx) throw new Error('useSearchHistory must be used within a SearchHistoryProvider');
