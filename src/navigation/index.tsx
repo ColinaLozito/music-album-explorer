@@ -31,7 +31,7 @@ const DetailsHeader = ({ navigation, back }: { navigation?: any; back?: any }) =
   );
 }
 
-export default function AppNavigator() {
+const AppNavigator = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
@@ -42,3 +42,5 @@ export default function AppNavigator() {
     </NavigationContainer>
   )
 }
+
+export default AppNavigator;

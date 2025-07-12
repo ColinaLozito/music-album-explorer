@@ -21,14 +21,14 @@ const musicBrainzApi = axios.create({
   },
 })
 
-export async function fetchAlbumsByArtist(artist: string, limit: number = 10): Promise<AlbumListResponse> {
+export const fetchAlbumsByArtist = async (artist: string, limit: number = 10): Promise<AlbumListResponse> => {
   const response = await musicBrainzApi.get<AlbumListResponse>(
     `release/?query=artist:${encodeURIComponent(artist)},type=Album&limit=${limit}`
   );
   return response.data;
 }
 
-export async function fetchAlbumDetails(albumId: string): Promise<AlbumDetails> {
+export const fetchAlbumDetails = async (albumId: string): Promise<AlbumDetails> => {
   const response = await musicBrainzApi.get<AlbumDetails>(
     `release/${albumId}?inc=recordings`
   );

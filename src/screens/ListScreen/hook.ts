@@ -6,7 +6,7 @@ import { fetchAlbumDetails } from '../../services/musicbrainz';
 import { useSetError } from '../../context/ErrorContext';
 import { useAlbumDetail } from '../../context/AlbumDetailContext';
 
-export function useAlbumDetailHandler() {
+export const useAlbumDetailHandler = () => {
   const [loading, setLoading] = useState(false);
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const setError = useSetError();

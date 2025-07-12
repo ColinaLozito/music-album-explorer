@@ -8,7 +8,7 @@ import { useSetError } from '../../context/ErrorContext';
 import { useSearchResult } from '../../context/SearchResultContext';
 import { useArtist } from '../../context/ArtistContext';
 
-export function useSearchArtist() {
+export const useSearchArtist = () => {
   const [loading, setLoading] = useState(false);
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { addSearch } = useSearchHistory();
