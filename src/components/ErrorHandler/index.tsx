@@ -2,10 +2,10 @@ import React from 'react';
 import { View } from 'react-native';
 import { Text, Button } from 'react-native-paper';
 import { useErrorHandler } from '../../hooks/useErrorHandler';
-import { ErrorHandlerProps } from './types';
 import { errorHandlerStyles } from './styles';
+import type { ErrorHandlerProps } from './types';
 
-const ErrorHandler: React.FC<ErrorHandlerProps> = ({ children }) => {
+const ErrorHandler = ({ children }: ErrorHandlerProps) => {
   const { hasError, error, resetError } = useErrorHandler();
 
   if (hasError) {

@@ -5,7 +5,7 @@ import { ArtistProvider } from './ArtistContext';
 import { SearchResultProvider } from './SearchResultContext';
 import { AlbumDetailProvider } from './AlbumDetailContext';
 
-export const ContextProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+export const ContextProvider = ({ children }: { children: React.ReactNode }) => (
   <ErrorProvider>
     <SearchHistoryProvider>
       <SearchResultProvider>

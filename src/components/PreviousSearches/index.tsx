@@ -1,10 +1,10 @@
 import React from 'react';
 import { View } from 'react-native';
 import { List } from 'react-native-paper';
+import type { PreviousSearchesProps } from './types';
 import { previousSearchesStyles } from './styles';
-import { PreviousSearchesProps } from './types';
 
-const PreviousSearches: React.FC<PreviousSearchesProps> = ({ artists, onSelect }) => {
+const PreviousSearches = ({ artists, onSelect }: PreviousSearchesProps) => {
   if (!artists.length) return null;
 
   return (
