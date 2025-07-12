@@ -18,7 +18,7 @@ export function useAlbumDetailHandler() {
     try {
       const details = await fetchAlbumDetails(albumId);
       setAlbumDetail(details);
-      navigation.navigate('Details', { albumId });
+      navigation.navigate('Details');
     } catch (e) {
       setError('Failed to fetch album details.');
     } finally {

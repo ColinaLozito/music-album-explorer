@@ -2,11 +2,11 @@ import { SafeAreaView } from 'react-native'
 import { PaperProvider } from 'react-native-paper'
 import AppNavigator from './src/navigation';
 import ErrorBanner from './src/components/ErrorBanner';
-import ErrorHandler from './src/components/ErrorHandler';
+import ErrorBoundary from './src/components/ErrorHandler';
 import { useError, useSetError } from './src/context/ErrorContext';
 import { ContextProvider } from './src/context';
 
-function GlobalErrorBanner() {
+const GlobalErrorBanner = () => {
   const error = useError();
   const setError = useSetError();
   return <ErrorBanner 
@@ -20,11 +20,11 @@ export default function App() {
   return (
     <PaperProvider>
       <ContextProvider>
-        <SafeAreaView style={{ flex: 1 }}>
-          <GlobalErrorBanner />
-          <ErrorHandler>
+        <SafeAreaView style={{ flex: 1, backgroundColor: 'white' }}>
+          <ErrorBoundary>
+            <GlobalErrorBanner />
             <AppNavigator />
-          </ErrorHandler>
+          </ErrorBoundary>
         </SafeAreaView>
       </ContextProvider>
     </PaperProvider>
