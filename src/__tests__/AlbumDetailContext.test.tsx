@@ -1,10 +1,13 @@
-import React from 'react';
-import { render, fireEvent } from '@testing-library/react-native';
-import { AlbumDetailProvider, useAlbumDetail } from '../context/AlbumDetailContext';
-import { BaseConsumer } from './utils/BaseConsumer';
-import { mockAlbumDetail } from './utils/mock';
+import React from "react";
+import { render, fireEvent } from "@testing-library/react-native";
+import {
+  AlbumDetailProvider,
+  useAlbumDetail,
+} from "@context/AlbumDetailContext";
+import { BaseConsumer } from "./utils/BaseConsumer";
+import { mockAlbumDetail } from "./utils/mock";
 
-test('AlbumDetailProvider stores and passes album detail data', () => {
+test("AlbumDetailProvider stores and passes album detail data", () => {
   function useAlbumDetailValue() {
     const { albumDetail, setAlbumDetail, clearAlbumDetail } = useAlbumDetail();
     return {
@@ -22,11 +25,11 @@ test('AlbumDetailProvider stores and passes album detail data', () => {
         displayKey="title"
         mockValue={mockAlbumDetail}
       />
-    </AlbumDetailProvider>
+    </AlbumDetailProvider>,
   );
-  expect(getByTestId('albumDetail').props.children).toBe('none');
-  fireEvent.press(getByText('Set'));
-  expect(getByTestId('albumDetail').props.children).toBe('Test Album');
-  fireEvent.press(getByText('Clear'));
-  expect(getByTestId('albumDetail').props.children).toBe('none');
-}); 
+  expect(getByTestId("albumDetail").props.children).toBe("none");
+  fireEvent.press(getByText("Set"));
+  expect(getByTestId("albumDetail").props.children).toBe("Test Album");
+  fireEvent.press(getByText("Clear"));
+  expect(getByTestId("albumDetail").props.children).toBe("none");
+});

@@ -12,8 +12,8 @@
  *     mockValue={mockArtist}
  *   />
  */
-import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import React from "react";
+import { View, Text, TouchableOpacity } from "react-native";
 
 type BaseConsumerProps<T> = {
   useContextHook: () => {
@@ -26,11 +26,16 @@ type BaseConsumerProps<T> = {
   mockValue: T;
 };
 
-export function BaseConsumer<T>({ useContextHook, testID, displayKey, mockValue }: BaseConsumerProps<T>) {
+export function BaseConsumer<T>({
+  useContextHook,
+  testID,
+  displayKey,
+  mockValue,
+}: BaseConsumerProps<T>) {
   const { value, setValue, clearValue } = useContextHook();
   return (
     <View>
-      <Text testID={testID}>{value ? String(value[displayKey]) : 'none'}</Text>
+      <Text testID={testID}>{value ? String(value[displayKey]) : "none"}</Text>
       <TouchableOpacity onPress={() => setValue(mockValue)}>
         <Text>Set</Text>
       </TouchableOpacity>
@@ -39,4 +44,4 @@ export function BaseConsumer<T>({ useContextHook, testID, displayKey, mockValue 
       </TouchableOpacity>
     </View>
   );
-} 
+}

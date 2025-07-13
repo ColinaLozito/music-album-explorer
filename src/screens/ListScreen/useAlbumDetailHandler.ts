@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import type { RootStackParamList } from '../../navigation/types';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { fetchAlbumDetails } from '../../services/musicbrainz';
-import { useSetError } from '../../context/ErrorContext';
-import { useAlbumDetail } from '../../context/AlbumDetailContext';
+import { useAlbumDetail } from '@context/AlbumDetailContext';
+import { useSetError } from '@context/ErrorContext';
+import { fetchAlbumDetails } from '@services/musicbrainz';
+import { RootStackParamList } from 'src/navigation/types';
 
 export const useAlbumDetailHandler = () => {
   const [loading, setLoading] = useState(false);
@@ -19,7 +19,7 @@ export const useAlbumDetailHandler = () => {
       const details = await fetchAlbumDetails(albumId);
       setAlbumDetail(details);
       navigation.navigate('Details');
-    } catch (e) {
+    } catch (_e) {
       setError('Failed to fetch album details.');
     } finally {
       setLoading(false);
