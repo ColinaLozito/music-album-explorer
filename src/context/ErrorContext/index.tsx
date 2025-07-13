@@ -2,8 +2,8 @@
  * ErrorContext provides global error state and a setter function for the app.
  * Used to display error banners and handle error state across components.
  */
-import React, { createContext, useContext, useState, ReactNode } from 'react';
-import { ErrorContextType } from './types';
+import React, { createContext, useContext, useState, ReactNode } from "react";
+import { ErrorContextType } from "./types";
 
 /**
  * The context object for error data and actions.
@@ -30,7 +30,7 @@ export const ErrorProvider = ({ children }: { children: ReactNode }) => {
  */
 export const useError = () => {
   const ctx = useContext(ErrorContext);
-  if (!ctx) throw new Error('useError must be used within an ErrorProvider');
+  if (!ctx) throw new Error("useError must be used within an ErrorProvider");
   return ctx.error;
 };
 
@@ -40,6 +40,6 @@ export const useError = () => {
  */
 export const useSetError = () => {
   const ctx = useContext(ErrorContext);
-  if (!ctx) throw new Error('useSetError must be used within an ErrorProvider');
+  if (!ctx) throw new Error("useSetError must be used within an ErrorProvider");
   return ctx.setError;
-}; 
+};

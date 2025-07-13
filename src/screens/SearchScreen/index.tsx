@@ -1,37 +1,39 @@
-import React, { useState } from 'react';
-import { View, Image } from 'react-native';
-import { TextInput, Button, Text, ActivityIndicator } from 'react-native-paper';
-import { searchScreenStyles as styles } from './styles';
-import { useSearchArtist } from './hook';
-import { useSearchHistory } from '../../context/SearchHistoryContext';
-import PreviousSearches from '../../components/PreviousSearches';
+import React, { useState } from "react";
+import { View, Image } from "react-native";
+import { TextInput, Button, Text, ActivityIndicator } from "react-native-paper";
+import { searchScreenStyles as styles } from "./styles";
+import { useSearchArtist } from "./useSearchArtist";
+import splashIcon from "@assets/splash-icon.png";
+import PreviousSearches from "@components/PreviousSearches";
+import { useSearchHistory } from "@context/SearchHistoryContext";
 
 const SearchScreen = () => {
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState("");
   const { searchArtist, loading } = useSearchArtist();
   const { history } = useSearchHistory();
-
   const handleSearch = () => {
     if (query.trim()) {
       searchArtist(query.trim());
-      setQuery('');
+      setQuery("");
     }
   };
 
   const handleSelectPrevious = (artist: string) => {
     setQuery(artist);
     searchArtist(artist);
-    setQuery('');
+    setQuery("");
   };
 
   return (
     <View style={styles.container}>
       <Image
-        source={require('../../../assets/splash-icon.png')}
+        source={splashIcon}
         style={styles.splashIcon}
         resizeMode="contain"
       />
-      <Text variant="titleLarge" style={styles.title}>Search Artist</Text>
+      <Text variant="titleLarge" style={styles.title}>
+        Search Artist
+      </Text>
       <TextInput
         label="Artist Name"
         value={query}
@@ -42,10 +44,17 @@ const SearchScreen = () => {
         returnKeyType="search"
         disabled={loading}
       />
-      <Button mode="contained" onPress={handleSearch} style={styles.button} disabled={loading}>
+      <Button
+        mode="contained"
+        onPress={handleSearch}
+        style={styles.button}
+        disabled={loading}
+      >
         Search
       </Button>
-      {loading && <ActivityIndicator style={styles.spinner} animating size="large" />}
+      {loading && (
+        <ActivityIndicator style={styles.spinner} animating size="large" />
+      )}
       <PreviousSearches artists={history} onSelect={handleSelectPrevious} />
     </View>
   );

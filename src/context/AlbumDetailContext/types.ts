@@ -1,4 +1,4 @@
-import { AlbumDetails } from "../../services/types";
+import { AlbumDetails } from "@services/types";
 
 export interface AlbumDetailContextType {
   albumDetail: AlbumDetails | null;

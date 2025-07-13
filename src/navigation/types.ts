@@ -1,6 +1,5 @@
 export type RootStackParamList = {
-  Search: undefined
-  List: undefined
-  Details: undefined
-}
-
+  Search: undefined;
+  List: undefined;
+  Details: undefined;
+};

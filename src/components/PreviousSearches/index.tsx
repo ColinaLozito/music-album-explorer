@@ -1,8 +1,8 @@
-import React from 'react';
-import { View } from 'react-native';
-import { List } from 'react-native-paper';
-import type { PreviousSearchesProps } from './types';
-import { previousSearchesStyles } from './styles';
+import React from "react";
+import { View } from "react-native";
+import { List } from "react-native-paper";
+import type { PreviousSearchesProps } from "./types";
+import { previousSearchesStyles } from "./styles";
 
 const PreviousSearches = ({ artists, onSelect }: PreviousSearchesProps) => {
   if (!artists.length) return null;
@@ -15,11 +15,11 @@ const PreviousSearches = ({ artists, onSelect }: PreviousSearchesProps) => {
           key={artist + idx}
           title={artist}
           onPress={() => onSelect(artist)}
-          left={props => <List.Icon {...props} icon="history" />}
+          left={(props) => <List.Icon {...props} icon="history" />}
         />
       ))}
     </View>
   );
 };
 
-export default PreviousSearches; 
+export default PreviousSearches;

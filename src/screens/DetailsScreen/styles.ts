@@ -1,14 +1,14 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
 export const detailsScreenStyles = StyleSheet.create({
   container: {
     flex: 1,
     paddingHorizontal: 16,
     paddingTop: 32,
-    backgroundColor: 'white',
+    backgroundColor: "white",
   },
   backButtonWrapper: {
-    position: 'absolute',
+    position: "absolute",
     top: 0,
     left: 0,
     zIndex: 10,
@@ -17,18 +17,18 @@ export const detailsScreenStyles = StyleSheet.create({
   },
   title: {
     marginBottom: 16,
-    textAlign: 'center',
+    textAlign: "center",
   },
   noDetails: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   mediaSection: {
     marginTop: 24,
   },
   mediaTitle: {
-    fontWeight: 'bold',
+    fontWeight: "bold",
     fontSize: 18,
   },
   list: {
